@@ -4,6 +4,13 @@
  * @param {...string} fields - the properties paths to pick
  * @returns {object} - returns the new object
  */
-export const pick = (obj, ...fields) => {
-
-};
+export function pick(obj) {
+    let args = Object.values(arguments).slice(1);
+    let result = {};
+    for (let key in obj) {
+        if (args.includes(key)) {
+            result[key] = key; // !pvs! obj[key];
+        }
+    }
+    return result;
+}
